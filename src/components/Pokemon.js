@@ -21,7 +21,7 @@ const Pokemon = () => {
       <div className="countries">
         <ul className="countries-list">
           {pokemons.map((pokemon) => (
-            <PokeCard name={pokemon.name} url={pokemon.url} />
+            <PokeCard pokemon={pokemon} />
           ))}
         </ul>
       </div>

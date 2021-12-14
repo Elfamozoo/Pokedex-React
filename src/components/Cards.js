@@ -7,26 +7,21 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 export const PokeCard = (props) => {
-  const [pokedetails, setPokedetails] = useState({});
-
-  useEffect(() => {
-    axios.get(props.url).then((res) => setPokedetails(res.data));
-  }, []);
-
+console.log(props)
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="100"
-          image=""
+          image={props.pokemon.sprites.front_default}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {props.name}
+            {props.pokemon.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-
+          {props.pokemon.height}
           </Typography>
         </CardContent>
       </CardActionArea>
