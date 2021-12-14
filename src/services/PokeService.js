@@ -1,0 +1,25 @@
+import axios from "axios";
+
+const pokemonsList = "https://pokeapi.co/api/v2/pokemon/?limit=9";
+
+const pokeDetails = "https://pokeapi.co/api/v2/pokemon/";
+
+export const PokeService = {
+  fetchPokemons: () => getPokemons(),
+  fetchPokeDetails: (url) => getPokeDetails(url),
+  fetchFullPokemons: () => getFullPokemons()
+};
+
+const getPokemons = async () => {
+  return axios.get(pokemonsList);
+};
+
+const getPokeDetails = async (url) => {
+  return axios.get(url);
+};
+
+const getFullPokemons = async () => {
+  let listPokemons = [];
+  listPokemons = await getPokemons().then((res) => res.data.results);
+  listPokemons.map((pokemon) => console.log(pokemon) )
+};
