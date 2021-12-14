@@ -19,14 +19,14 @@ export const PokeCard = (props) => {
         <CardMedia
           component="img"
           height="100"
-          image={pokedetails.sprites.front_default}
+          image=""
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {props.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {pokedetails.types[0].type.name}
+
           </Typography>
         </CardContent>
       </CardActionArea>
