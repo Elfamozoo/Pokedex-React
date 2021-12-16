@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import * as React from "react";
+import {
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActionArea,
+} from "@mui/material";
 
 export const PokeCard = (props) => {
-console.log(props)
+  console.log(props);
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 400 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="100"
-          image={props.pokemon.sprites.front_default}
+          height="400"
+          image={props.pokemon.sprites.other.home.front_default}
         />
         <CardContent>
+          <Typography gutterBottom variant="h6" component="div">
+            {props.pokemon.id}
+          </Typography>
           <Typography gutterBottom variant="h5" component="div">
             {props.pokemon.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-          {props.pokemon.height}
+          <Typography variant="body1" color="text.secondary">
+            {props.pokemon.types[0].type.name}
           </Typography>
         </CardContent>
       </CardActionArea>

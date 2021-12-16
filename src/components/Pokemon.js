@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { PokeCard } from "./Cards";
 import { PokeService } from "../services/PokeService";
+import CircularProgress from "@mui/material/CircularProgress";
+import {
+  Typography,
+  appBar,
+  Card,
+  CardMedia,
+  CardContent,
+  CssBaseline,
+  Grid,
+  Container,
+  CardActionArea,
+  Box,
+  button,
+} from "@mui/material";
 
 const Pokemon = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -14,17 +27,25 @@ const Pokemon = () => {
     });
   }, []);
 
+  const PokeCards =
+    pokemons &&
+    pokemons.map((pokemon) => (
+      <Grid item xs={12} sm={6} md={4}>
+        <PokeCard pokemon={pokemon} />
+      </Grid>
+    ));
+
   if (loaded === false) {
-    return <p>Loading...</p>;
+    return (
+      <Box sx={{ display: "flex" }}>
+        <CircularProgress />
+      </Box>
+    );
   } else {
     return (
-      <div className="countries">
-        <ul className="countries-list">
-          {pokemons.map((pokemon) => (
-            <PokeCard pokemon={pokemon} />
-          ))}
-        </ul>
-      </div>
+      <Grid container spacing={2}>
+        {PokeCards}
+      </Grid>
     );
   }
 };

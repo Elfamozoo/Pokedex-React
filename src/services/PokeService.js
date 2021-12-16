@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const pokemonsList = "https://pokeapi.co/api/v2/pokemon/?limit=1200";
+const pokemonsList = "https://pokeapi.co/api/v2/pokemon/?limit=9";
 
 export const PokeService = {
   fetchPokemons: () => getPokemons(),
