@@ -8,13 +8,12 @@ import {
 } from "@mui/material";
 
 export const PokeCard = (props) => {
-  console.log(props);
   return (
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={{ maxWidth: 200 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="400"
+          height="200"
           image={props.pokemon.sprites.other.home.front_default}
         />
         <CardContent>

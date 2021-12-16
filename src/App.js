@@ -4,6 +4,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import NotFound from "./pages/NotFound/NotFound";
 import Pokemon from './components/Pokemon';
+import { Pokemondetails } from './components/Pokemondetails';
 
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/pokemon' element={<Pokemon />}></Route>
+        <Route path='/details' element={<Pokemondetails />}></Route>
         <Route></Route>
       </Routes>
     </Router>
