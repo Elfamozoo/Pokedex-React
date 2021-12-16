@@ -24,8 +24,11 @@ export const PokeCard = (props) => {
           <Typography gutterBottom variant="h5" component="div">
             {props.pokemon.name}
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" color="text.primary">
             {props.pokemon.types[0].type.name}
+            <span> </span>
+            {props.pokemon.types[1] && props.pokemon.types[1].type.name }
+
           </Typography>
         </CardContent>
       </CardActionArea>
