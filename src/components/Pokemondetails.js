@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useLocation } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
 import {
   CircularProgress,
   Typography,
@@ -14,48 +13,48 @@ import {
   CardActionArea,
   Box,
   button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
 } from "@mui/material";
+
+function createData(Stats, Valeurs) {
+  return { Stats, Valeurs };
+}
 
 export const Pokemondetails = (props) => {
   const location = useLocation();
   const { pokemondetails } = location.state;
 
-  const rows: GridRowsProp = [
-    {
-      id: 1,
-      col1: pokemondetails.stats[0].stat.name,
-      col2: pokemondetails.stats[0].base_stat,
-    },
-    {
-      id: 2,
-      col1: pokemondetails.stats[1].stat.name,
-      col2: pokemondetails.stats[1].base_stat,
-    },
-    {
-      id: 3,
-      col1: pokemondetails.stats[2].stat.name,
-      col2: pokemondetails.stats[2].base_stat,
-    },
-    {
-      id: 4,
-      col1: pokemondetails.stats[3].stat.name,
-      col2: pokemondetails.stats[3].base_stat,
-    },
-    {
-      id: 5,
-      col1: pokemondetails.stats[4].stat.name,
-      col2: pokemondetails.stats[4].base_stat,
-    },
-    {
-      id: 6,
-      col1: pokemondetails.stats[5].stat.name,
-      col2: pokemondetails.stats[5].base_stat,
-    },
-  ];
-
-  const columns: GridColDef[] = [
-    { field: "col1", headerName: "Stats", width: 150 },
-    { field: "col2", headerName: "Valeur", width: 150 },
+  const rows = [
+    createData(
+      pokemondetails.stats[0].stat.name,
+      pokemondetails.stats[0].base_stat
+    ),
+    createData(
+      pokemondetails.stats[1].stat.name,
+      pokemondetails.stats[1].base_stat
+    ),
+    createData(
+      pokemondetails.stats[2].stat.name,
+      pokemondetails.stats[2].base_stat
+    ),
+    createData(
+      pokemondetails.stats[3].stat.name,
+      pokemondetails.stats[3].base_stat
+    ),
+    createData(
+      pokemondetails.stats[4].stat.name,
+      pokemondetails.stats[4].base_stat
+    ),
+    createData(
+      pokemondetails.stats[5].stat.name,
+      pokemondetails.stats[5].base_stat
+    ),
   ];
 
   return (
@@ -81,9 +80,29 @@ export const Pokemondetails = (props) => {
         {pokemondetails.abilities[1] &&
           pokemondetails.abilities[1].ability.name}
       </div>
-      <div style={{ height: 500, width: "25%" }}>
-        <DataGrid rows={rows} columns={columns} />
-      </div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Stats</TableCell>
+              <TableCell>Valeurs</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.name}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.Stats}
+                </TableCell>
+                <TableCell>{row.Valeurs}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 };
