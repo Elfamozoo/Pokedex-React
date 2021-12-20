@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useLocation } from "react-router-dom";
+import "../styles/Pokemondetails.scss"
 import {
   CircularProgress,
   Typography,
@@ -68,13 +69,13 @@ export const Pokemondetails = (props) => {
           />
         </CardActionArea>
       </Card>
-      <div>{pokemondetails.name}</div>
-      <div>
+      <div className="nompokemon">{pokemondetails.name}</div>
+      <div className="typepokemon">
         {pokemondetails.types[0].type.name}
         <span> </span>
         {pokemondetails.types[1] && pokemondetails.types[1].type.name}
       </div>
-      <div>
+      <div className="abilitypokemon">
         {pokemondetails.abilities[0].ability.name}
         <span> </span>
         {pokemondetails.abilities[1] &&
