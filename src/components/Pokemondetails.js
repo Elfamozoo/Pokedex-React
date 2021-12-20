@@ -59,11 +59,11 @@ export const Pokemondetails = (props) => {
 
   return (
     <>
-      <Card sx={{ maxWidth: 200 }}>
+      <Card sx={{ maxWidth: 400 }}>
         <CardActionArea>
           <CardMedia
             component="img"
-            height="200"
+            height="400"
             image={pokemondetails.sprites.other.home.front_default}
           />
         </CardActionArea>
