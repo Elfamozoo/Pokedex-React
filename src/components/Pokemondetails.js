@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useLocation } from "react-router-dom";
-import "../styles/Pokemondetails.scss"
+import "../styles/Pokemondetails.scss";
 import {
   CircularProgress,
   Typography,
