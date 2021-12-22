@@ -16,14 +16,14 @@ export const PokeCard = (props) => {
           height="200"
           image={props.pokemon.sprites.other.home.front_default}
         />
-        <CardContent>
+        <CardContent className={`${props.pokemon.types[0].type.name}`}>
           <Typography gutterBottom variant="h6" component="div">
-            {props.pokemon.id}
+            #{props.pokemon.id}
           </Typography>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography className="namepokemon" gutterBottom variant="h5" component="div">
             {props.pokemon.name}
           </Typography>
-          <Typography variant="body1" color="text.primary">
+          <Typography className="typespokemon" variant="body1" color="text.primary">
             {props.pokemon.types[0].type.name}
             <span> </span>
             {props.pokemon.types[1] && props.pokemon.types[1].type.name }

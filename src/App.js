@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./styles/App.scss";
-import HomePage from "./pages/HomePage/HomePage";
 import NotFound from "./pages/NotFound/NotFound";
-import Pokemon from './components/Pokemon';
-import { Pokemondetails } from './components/Pokemondetails';
-
+import Pokemon from "./components/Pokemon";
+import { Pokemondetails } from "./components/Pokemondetails";
+import ButtonAppBar from "./components/Header";
 
 const App = () => {
   return (
     <Router>
+      <ButtonAppBar/>
       <Routes>
-        <Route path='/pokemon' element={<Pokemon />}></Route>
-        <Route path='/details' element={<Pokemondetails />}></Route>
+        <Route path="/" element={<Pokemon />}></Route>
+        <Route path="/details" element={<Pokemondetails />}></Route>
         <Route></Route>
       </Routes>
     </Router>

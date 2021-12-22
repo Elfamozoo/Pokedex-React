@@ -44,7 +44,7 @@ const Pokemon = () => {
           alignItems: "center",
         }}
       >
-        <Link to="/details" state={{ pokemondetails: pokemon }}>
+        <Link className="linkpokemon" to="/details" state={{ pokemondetails: pokemon }}>
           <PokeCard pokemon={pokemon} />
         </Link>
       </Grid>
