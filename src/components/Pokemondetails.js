@@ -60,50 +60,69 @@ export const Pokemondetails = (props) => {
 
   return (
     <>
-      <Card sx={{ maxWidth: 400 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="400"
-            image={pokemondetails.sprites.other.home.front_default}
-          />
-        </CardActionArea>
-      </Card>
-      <div className="nompokemon">{pokemondetails.name}</div>
-      <div className="typepokemon">
-        {pokemondetails.types[0].type.name}
-        <span> </span>
-        {pokemondetails.types[1] && pokemondetails.types[1].type.name}
-      </div>
-      <div className="abilitypokemon">
-        {pokemondetails.abilities[0].ability.name}
-        <span> </span>
-        {pokemondetails.abilities[1] &&
-          pokemondetails.abilities[1].ability.name}
-      </div>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Stats</TableCell>
-              <TableCell>Valeurs</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.Stats}
-                </TableCell>
-                <TableCell>{row.Valeurs}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Grid container spacing={2}>
+        <Grid item xl={4} xs={12} sm={6} md={6}>
+          <Card sx={{ maxWidth: 400 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="400"
+                image={pokemondetails.sprites.other.home.front_default}
+              />
+              <div className="formepokemon"> Forme Normal</div>
+              <CardMedia
+                component="img"
+                height="400"
+                image={pokemondetails.sprites.other.home.front_shiny}
+              />
+              <div className="formepokemon"> Forme Shiney</div>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xl={5} xs={12} sm={8} md={6}>
+          <div className="nompokemon">Nom : {pokemondetails.name}</div>
+          <div className="typepokemon">
+            Type : {pokemondetails.types[0].type.name}
+            <span> </span>
+            {pokemondetails.types[1] && pokemondetails.types[1].type.name}
+          </div>
+          <div className="abilitypokemon">
+            Talents : {pokemondetails.abilities[0].ability.name}
+            <span> </span>
+            {pokemondetails.abilities[1] &&
+              pokemondetails.abilities[1].ability.name}
+          </div>
+          <TableContainer sx={{ mt: "10rem" }} component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={{ fontSize: "3rem" }}>Stats</TableCell>
+                  <TableCell sx={{ fontSize: "3rem" }}>Valeurs</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow
+                    key={row.name}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell
+                      sx={{ fontSize: "2rem" }}
+                      component="th"
+                      scope="row"
+                    >
+                      {row.Stats}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "2rem" }}>
+                      {row.Valeurs}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+      </Grid>
     </>
   );
 };

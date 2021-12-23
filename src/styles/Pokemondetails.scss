@@ -3,47 +3,63 @@ html {
 }
 
 .nompokemon {
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 3rem;
   letter-spacing: 0px;
   word-spacing: 0px;
   color: #000000;
-  font-weight: 700;
-  text-decoration: rgb(232, 230, 227);
+  font-weight: 400;
+  text-decoration: rgb(68, 68, 68);
   font-style: normal;
   font-variant: normal;
   text-transform: capitalize;
+  line-height: 5rem;
+}
+
+.formepokemon {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: 400;
+  text-decoration: rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: normal;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .typepokemon {
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 2rem;
   letter-spacing: 0px;
   word-spacing: 0px;
   color: #000000;
-  font-weight: 700;
-  text-decoration: rgb(232, 230, 227);
+  font-weight: 400;
+  text-decoration: rgb(68, 68, 68);
   font-style: normal;
   font-variant: normal;
   text-transform: capitalize;
+  line-height: 5rem;
 }
 
 .abilitypokemon {
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 2rem;
   letter-spacing: 0px;
   word-spacing: 0px;
   color: #000000;
-  font-weight: 700;
-  text-decoration: rgb(232, 230, 227);
+  font-weight: 400;
+  text-decoration: rgb(68, 68, 68);
   font-style: normal;
   font-variant: normal;
   text-transform: capitalize;
+  line-height: 5rem;
 }
 
-
 #statspokemon {
-    font-family: Verdana, Geneva, sans-serif;
+  font-family: Verdana, Geneva, sans-serif;
   font-size: 3rem;
   letter-spacing: 0px;
   word-spacing: 0px;
