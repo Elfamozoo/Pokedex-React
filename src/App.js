@@ -12,7 +12,7 @@ const App = () => {
       <ButtonAppBar/>
       <Routes>
         <Route path="/" element={<Pokemon />}></Route>
-        <Route path="/details" element={<Pokemondetails />}></Route>
+        <Route path="/details" target="_blank" element={<Pokemondetails />}></Route>
         <Route></Route>
       </Routes>
     </Router>
