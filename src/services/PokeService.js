@@ -20,7 +20,7 @@ const getFullPokemons = async () => {
   let listPokemons = [];
   listPokemons = await getPokemons().then((res) => res.data.results);
   return Promise.all(
-    listPokemons.map((pokemon) =>
+    listPokemons.map((pokemon, index) =>
       getPokeDetails(pokemon.url).then((res) => res.data)
     )
   );

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { PokeCard } from "./Cards";
-import { PokeService } from "../services/PokeService";
 import { Box, CircularProgress, Grid } from "@mui/material";
+import React from "react";
+import { Link } from "react-router-dom";
+import { PokeService } from "../services/PokeService";
+import { PokeCard } from "./Cards";
 
 class Pokemon extends React.Component {
   constructor(props) {
@@ -13,7 +13,6 @@ class Pokemon extends React.Component {
       limit: 30,
     };
   }
-
   componentDidMount = () => {
     window.onscroll = (e) => {
       if (
@@ -48,7 +47,7 @@ class Pokemon extends React.Component {
         >
           <Link
             className="linkpokemon"
-            to="/details"
+            to={`/details/${pokemon.id}`}
             state={{ pokemondetails: pokemon }}
           >
             <PokeCard pokemon={pokemon} />
@@ -62,7 +61,7 @@ class Pokemon extends React.Component {
     console.log(this);
     const { loaded } = this.state;
 
-    if (loaded === false) {
+    if (!loaded) {
       return (
         <Box
           style={{
