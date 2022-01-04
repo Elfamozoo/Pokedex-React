@@ -13,7 +13,7 @@ class Pokemon extends React.Component {
       limit: 30,
     };
   }
-  componentDidMount = () => {
+  componentDidMount = async () => {
     window.onscroll = (e) => {
       if (
         window.innerHeight + window.pageYOffset >=
@@ -23,13 +23,27 @@ class Pokemon extends React.Component {
       }
     };
 
-    PokeService.fetchFullPokemons().then((res) => {
-      this.setState({ pokemons: res, loaded: true });
-    });
+    let listePokemons = JSON.parse(localStorage.getItem("listepok"));
+    if (!listePokemons) {
+      let listePokemonsBrut = [];
+      listePokemonsBrut = await PokeService.fetchFullPokemons();
+      listePokemons = listePokemonsBrut.map((pokemonCache) => {
+        return {
+          id: pokemonCache.id,
+          name: pokemonCache.name,
+          sprites: pokemonCache.sprites.other.home.front_default,
+          types: pokemonCache.types,
+        };
+      });
+      localStorage.setItem("listepok", JSON.stringify(listePokemons));
+    }
+    console.log(listePokemons);
+    this.setState({ pokemons: listePokemons, loaded: true });
   };
 
   PokeCards = () => {
     const { pokemons, limit } = this.state;
+    console.log(pokemons);
     return (
       pokemons &&
       pokemons.slice(0, limit).map((pokemon) => (
@@ -58,7 +72,6 @@ class Pokemon extends React.Component {
   };
 
   render() {
-    console.log(this);
     const { loaded } = this.state;
 
     if (!loaded) {

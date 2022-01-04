@@ -45,7 +45,6 @@ export const Pokemondetails = (props) => {
       setPokemonPage({pokemondetails: res.data, loaded: true});
     });
   }, [id, pokemonPage]);
-  console.log(pokemonPage);
 
   const { pokemondetails, loaded } = pokemonPage
 

@@ -14,7 +14,7 @@ export const PokeCard = (props) => {
         <CardMedia
           component="img"
           height="200"
-          image={props.pokemon.sprites.other.home.front_default}
+          image={props.pokemon.sprites}
         />
         <CardContent className={`${props.pokemon.types[0].type.name}`}>
           <Typography
