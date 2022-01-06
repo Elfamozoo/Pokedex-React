@@ -17,11 +17,23 @@ const getPokeDetails = async (url) => {
 };
 
 const getFullPokemons = async () => {
-  let listPokemons = [];
-  listPokemons = await getPokemons().then((res) => res.data.results);
-  return Promise.all(
-    listPokemons.map((pokemon, index) =>
-      getPokeDetails(pokemon.url).then((res) => res.data)
-    )
-  );
+  let listPokemons = JSON.parse(localStorage.getItem("listepok"));
+  if (!listPokemons) {
+    listPokemons = await getPokemons().then((res) => res.data.results);
+    let promisePok = await Promise.all(
+      listPokemons.map((pokemon) =>
+        getPokeDetails(pokemon.url).then((res) => res.data)
+      )
+    );
+    listPokemons = promisePok.map((pokemonCache) => {
+      return {
+        id: pokemonCache.id,
+        name: pokemonCache.name,
+        sprites: pokemonCache.sprites.other.home.front_default,
+        types: pokemonCache.types,
+      };
+    });
+  }
+  localStorage.setItem("listepok", JSON.stringify(listPokemons));
+  return listPokemons;
 };

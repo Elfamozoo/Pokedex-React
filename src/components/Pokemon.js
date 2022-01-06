@@ -22,23 +22,10 @@ class Pokemon extends React.Component {
         this.setState({ limit: this.state.limit + 30 });
       }
     };
-
-    let listePokemons = JSON.parse(localStorage.getItem("listepok"));
-    if (!listePokemons) {
-      let listePokemonsBrut = [];
-      listePokemonsBrut = await PokeService.fetchFullPokemons();
-      listePokemons = listePokemonsBrut.map((pokemonCache) => {
-        return {
-          id: pokemonCache.id,
-          name: pokemonCache.name,
-          sprites: pokemonCache.sprites.other.home.front_default,
-          types: pokemonCache.types,
-        };
-      });
-      localStorage.setItem("listepok", JSON.stringify(listePokemons));
-    }
-    console.log(listePokemons);
-    this.setState({ pokemons: listePokemons, loaded: true });
+    const listPokemons = await PokeService.fetchFullPokemons();
+    console.log(PokeService.fetchFullPokemons())
+    this.setState({ pokemons: listPokemons, loaded: true });
+    console.log(listPokemons)
   };
 
   PokeCards = () => {
