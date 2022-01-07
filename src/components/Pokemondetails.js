@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import "../styles/Pokemondetails.scss";
 import { useState, useEffect } from "react";
 import { PokeService } from "../services/PokeService";
-
 import {
   CircularProgress,
   Typography,
@@ -44,25 +43,42 @@ export const Pokemondetails = (props) => {
   });
 
   useEffect(() => {
-    PokeService.fetchPokeDetails(
-      `https://pokeapi.co/api/v2/pokemon/${id}`
-    ).then((res) => {
-      setPokemonPage({ pokemondetails: res.data, loaded: true });
-    });
-  }, [id, pokemonPage]);
-
-  useEffect(() => {
-    PokeService.fetchPokemonsSpecies(id).then((res) => {
-      setPokemonSpecies({ pokemonspecies: res.data, loaded: true });
-    });
-  }, [id, pokemonSpecies]);
-  console.log(pokemonSpecies);
+    async function pokdetails() {
+      await PokeService.fetchPokeDetails(
+        `https://pokeapi.co/api/v2/pokemon/${id}`
+      ).then((res) => {
+        setPokemonPage({ pokemondetails: res.data, loaded: true });
+      });
+    }
+    pokdetails();
+    async function pokspecies() {
+      await PokeService.fetchPokemonsSpecies(id).then((res) => {
+        setPokemonSpecies({ pokemonspecies: res.data, loaded: true });
+      });
+    }
+    pokspecies();
+  }, [id]);
 
   const { pokemondetails, loaded } = pokemonPage;
 
-  const { pokemonspecies, loaded: loading } = pokemonSpecies
+  const { pokemonspecies, loaded: loading } = pokemonSpecies;
 
-  if (!loaded && !loading) {
+  console.log(pokemondetails, pokemonspecies);
+  if (!loaded) {
+    return (
+      <Box
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+  if (!loading) {
     return (
       <Box
         style={{
@@ -124,7 +140,9 @@ export const Pokemondetails = (props) => {
             </Card>
           </Grid>
           <Grid item xl={5} xs={12} sm={8} md={6}>
-            <div className="nompokemon">Nom Francais : {pokemonspecies.names[4].name}</div>
+            <div className="nompokemon">
+              Nom Francais : {pokemonspecies.names[4].name}
+            </div>
             <div className="typepokemon">
               Type : {pokemondetails.types[0].type.name}
               <span> </span>
