@@ -2,10 +2,24 @@ import axios from "axios";
 
 const pokemonsList = "https://pokeapi.co/api/v2/pokemon/?limit=1200";
 
+const pokemonsSpecies = `https://pokeapi.co/api/v2/pokemon-species/`;
+
+const pokemonsEvolution = `https://pokeapi.co/api/v2/evolution-chain/`;
+
 export const PokeService = {
   fetchPokemons: () => getPokemons(),
   fetchPokeDetails: (url) => getPokeDetails(url),
   fetchFullPokemons: () => getFullPokemons(),
+  fetchPokemonsSpecies: (id) => getPokemonsSpecies(id),
+  fetchPokemonsEvolutions: (idEvo) => getPokemonsEvolutions(idEvo),
+};
+
+const getPokemonsSpecies = async (id) => {
+  return axios.get(pokemonsSpecies + id);
+};
+
+const getPokemonsEvolutions = async (idEvo) => {
+  return axios.get(pokemonsEvolution + idEvo);
 };
 
 const getPokemons = async () => {

@@ -1,11 +1,11 @@
-import { Box, CircularProgress, Grid } from "@mui/material";
+import { Box, CircularProgress, Grid, Switch, FormControlLabel, FormGroup } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { PokeService } from "../services/PokeService";
 import { PokeCard } from "./Cards";
 
 class Pokemon extends React.Component {
-  constructor(props) {
+  constructor(props) { 
     super(props);
     this.state = {
       pokemons: [],
@@ -23,14 +23,11 @@ class Pokemon extends React.Component {
       }
     };
     const listPokemons = await PokeService.fetchFullPokemons();
-    console.log(PokeService.fetchFullPokemons())
     this.setState({ pokemons: listPokemons, loaded: true });
-    console.log(listPokemons)
   };
 
   PokeCards = () => {
     const { pokemons, limit } = this.state;
-    console.log(pokemons);
     return (
       pokemons &&
       pokemons.slice(0, limit).map((pokemon) => (
