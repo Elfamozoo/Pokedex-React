@@ -64,21 +64,8 @@ export const Pokemondetails = (props) => {
   const { pokemonspecies, loaded: loading } = pokemonSpecies;
 
   console.log(pokemondetails, pokemonspecies);
-  if (!loaded) {
-    return (
-      <Box
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    );
-  }
-  if (!loading) {
+  
+  if (!loaded || !loading) {
     return (
       <Box
         style={{
