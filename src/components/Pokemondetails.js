@@ -64,7 +64,7 @@ export const Pokemondetails = (props) => {
   const { pokemonspecies, loaded: loading } = pokemonSpecies;
 
   console.log(pokemondetails, pokemonspecies);
-  
+
   if (!loaded || !loading) {
     return (
       <Box
@@ -140,6 +140,12 @@ export const Pokemondetails = (props) => {
               <span> </span>
               {pokemondetails.abilities[1] &&
                 pokemondetails.abilities[1].ability.name}
+            </div>
+            <div className="biopokemon">
+              Description : {pokemonspecies.flavor_text_entries[16].flavor_text}
+            </div>
+            <div className="evopokemon">
+              {/* Evolution : {pokemonspecies.evolves_from_species.name} */}
             </div>
             <TableContainer sx={{ mt: "10rem" }} component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">

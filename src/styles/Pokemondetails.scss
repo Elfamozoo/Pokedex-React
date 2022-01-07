@@ -58,6 +58,33 @@ html {
   line-height: 5rem;
 }
 
+.biopokemon {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: 400;
+  text-decoration: rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: normal;
+  line-height: 5rem;
+}
+
+.evopokemon {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: 400;
+  text-decoration: rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: normal;
+  text-transform: capitalize;
+  line-height: 5rem;
+}
+
 #statspokemon {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 3rem;
